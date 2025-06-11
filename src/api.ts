@@ -7,7 +7,7 @@ const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, Math.
 
 const api = {
   getBands: async (search?: string, genre?: string): Promise<Band[]> => {
-    await sleep(750)
+    await sleep(800)
 
     let filteredBands = bands
 
@@ -22,7 +22,7 @@ const api = {
     return filteredBands
   },
   getAlbum: async (id: Album["id"]): Promise<Album> => {
-    await sleep(750)
+    await sleep(800)
 
     if (id === "001") {
       return album001
