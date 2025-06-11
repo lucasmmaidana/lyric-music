@@ -15,7 +15,7 @@ export default function Filters() {
   const params = new URLSearchParams(searchParams)
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2 flex-wrap justify-center">
       {filters.map((filter) => {
         if (filter.value) {
           params.set("genre", filter.value)

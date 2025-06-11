@@ -33,7 +33,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} antialiased`}>
-        <div className={`max-w-[1730px] mx-auto grid ${showSideContent ? "xl:grid-cols-[1fr_374px]" : "grid-cols-1"} gap-[34px] px-7 py-7 mb-12`}>
+        <div className={`max-w-[1730px] mx-auto grid grid-cols-1 ${showSideContent ? "xl:grid-cols-[1fr_374px]" : ""} gap-[34px] px-7 py-7 mb-12`}>
           <main className="">
             <nav className="bg-black-dark rounded-xl flex items-center justify-between px-6 py-5 gap-3 flex-wrap flex-col lg:flex-row">
               <div className="flex items-center gap-x-16 gap-y-5 flex-wrap justify-center lg:justify-start">
