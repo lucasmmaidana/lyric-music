@@ -6,7 +6,7 @@ export default async function BandCard({band}: {band: Band}) {
   const album: Album = await api.getAlbum(band.id)
 
   return (
-    <div className="bg-black-dark rounded-xl overflow-hidden">
+    <article className="bg-black-dark rounded-xl overflow-hidden">
       <figure className="relative w-full h-48 bg-gray">
         <BandImage className="w-full h-full" bandName={band.band_name} bandId={band.id} />
       </figure>
@@ -15,6 +15,6 @@ export default async function BandCard({band}: {band: Band}) {
         <p className="text-white-light text-sm mb-2">{album.album || band.album}</p>
         <p className="text-white-dark text-sm">{album.description}</p>
       </div>
-    </div>
+    </article>
   )
 }

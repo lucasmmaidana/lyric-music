@@ -48,11 +48,11 @@ export default function SearchBox() {
   }, [inputValue, search, updateSearch])
 
   return (
-    <form onSubmit={handleSubmit} className="relative">
+    <form onSubmit={handleSubmit} className="relative w-full lg:w-auto">
       <Search className="absolute w-5 h-5 text-gray left-3 top-1/2 -translate-y-1/2" />
       <input
         type="search"
-        className="bg-black-light max-w-52 rounded-full pl-10 pr-5 py-2 text-white-light focus:outline-none focus:ring-green focus:ring-1"
+        className="bg-black-light w-full lg:max-w-52 rounded-full pl-10 pr-5 py-2 text-white-light focus:outline-none focus:ring-green focus:ring-1"
         value={inputValue}
         name="search"
         onChange={handleSearch}

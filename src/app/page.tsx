@@ -9,7 +9,7 @@ export default async function Home({searchParams}: {searchParams: Promise<{searc
   const bands: Band[] = await api.getBands(search, genre)
 
   return (
-    <section className="grid grid-cols-3 gap-7 mt-8 mb-12">
+    <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 mt-8 ">
       {bands.length === 0 && <div className="text-white-light text-center text-2xl font-bold">No bands found</div>}
       {bands.map((band) => (
         <Suspense key={band.id} fallback={<BandCardSkeleton />}>
