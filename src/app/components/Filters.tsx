@@ -12,17 +12,18 @@ export default function Filters() {
     {name: "Pop", value: "pop"},
   ]
   const activeFilter = searchParams.get("genre") || ""
-  const params = new URLSearchParams(searchParams)
 
   return (
     <div className="flex items-center gap-2 flex-wrap justify-center">
       {filters.map((filter) => {
+        const params = new URLSearchParams(searchParams)
         if (filter.value) {
           params.set("genre", filter.value)
         } else {
           params.delete("genre")
         }
         const href = `?${params.toString()}`
+
         return (
           <FilterChip key={filter.value} active={activeFilter === filter.value} href={href}>
             {filter.name}

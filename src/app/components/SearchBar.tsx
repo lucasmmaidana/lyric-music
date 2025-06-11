@@ -3,12 +3,14 @@
 import Search from "../icons/Search"
 import {useRouter, useSearchParams} from "next/navigation"
 import {useCallback, useEffect, useState} from "react"
+import useDebounce from "../hooks/useDebounce"
 
-export default function SearchBox() {
+export default function SearchBar() {
   const searchParams = useSearchParams()
   const search = searchParams.get("search") || ""
   const router = useRouter()
   const [inputValue, setInputValue] = useState(search)
+  const debouncedValue = useDebounce(inputValue, 300)
 
   const updateSearch = useCallback(
     (value: string) => {
@@ -38,14 +40,10 @@ export default function SearchBox() {
   }
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (inputValue !== search) {
-        updateSearch(inputValue)
-      }
-    }, 500)
-
-    return () => clearTimeout(timer)
-  }, [inputValue, search, updateSearch])
+    if (debouncedValue !== search) {
+      updateSearch(debouncedValue)
+    }
+  }, [debouncedValue, search, updateSearch])
 
   return (
     <form onSubmit={handleSubmit} className="relative w-full lg:w-auto">
