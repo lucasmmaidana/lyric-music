@@ -12,7 +12,7 @@
 }
 
 body {
-  background: #181818;
-  color: #9c9c9c;
+  background: var(--color-black-light);
+  color: var(--color-white-light);
   font-family: "Inter", sans-serif;
 }
