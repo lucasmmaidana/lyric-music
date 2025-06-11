@@ -11,6 +11,7 @@ import Link from "next/link"
 import SideContent from "./components/SideContent"
 import {Suspense} from "react"
 import {cookies} from "next/headers"
+import Flag from "./icons/Flag"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -32,22 +33,24 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} antialiased`}>
-        <div className={`max-w-[1730px] mx-auto grid ${showSideContent ? "grid-cols-[1fr_374px]" : "grid-cols-1"} gap-[34px] px-7 py-7`}>
+        <div className={`max-w-[1730px] mx-auto grid ${showSideContent ? "xl:grid-cols-[1fr_374px]" : "grid-cols-1"} gap-[34px] px-7 py-7 mb-12`}>
           <main className="">
-            <nav className="bg-black-dark rounded-xl flex items-center justify-between pl-1.5 pr-6">
-              <Link href="/">
-                <Image className="" src="/lyric_lg_rgb_mnt_wht.png" alt="Lyric Music" width={163} height={105} priority />
-              </Link>
-              <Suspense>
-                <Filters />
-              </Suspense>
-              <Suspense>
-                <SearchBox />
-              </Suspense>
+            <nav className="bg-black-dark rounded-xl flex items-center justify-between px-6 py-5 gap-3 flex-wrap flex-col lg:flex-row">
+              <div className="flex items-center gap-x-16 gap-y-5 flex-wrap justify-center lg:justify-start">
+                <Link href="/" className="-ml-2 min-w-11 -my-5 shrink-0">
+                  <Image src="/lyric_lg_rgb_mnt_wht.png" alt="Lyric Music" width={163} height={105} priority />
+                </Link>
+                <Suspense>
+                  <Filters />
+                </Suspense>
+                <Suspense>
+                  <SearchBox />
+                </Suspense>
+              </div>
               <div className="flex items-center gap-4">
-                <Bell className="w-10 h-10 text-white-light" />
-                <Message className="w-10 h-10 text-white-light" />
-                <Wheel className="w-10 h-10 text-white-light" />
+                <Bell className="w-10 h-10 text-white-light cursor-pointer" />
+                <Message className="w-10 h-10 text-white-light cursor-pointer" />
+                <Wheel className="w-10 h-10 text-white-light cursor-pointer" />
               </div>
             </nav>
             {children}
@@ -64,6 +67,15 @@ export default async function RootLayout({
                 free—because we believe that great music should be accessible to everyone. At Lyric Music, we&apos;re passionate about creating a community where music lovers like you can explore,
                 connect, and celebrate the power of sound. So dive in, press play, and let the music move you. Welcome to your new favorite way to listen.
               </p>
+              <div className="mt-12 bg-black-light px-6 py-5 rounded-xl">
+                <div className="flex items-center gap-4">
+                  <Flag className="size-24 text-green" />
+                  <div>
+                    <h2 className="text-green text-xl font-bold">COMING SOON</h2>
+                    <p className="text-white-dark text-base leading-7 ">Check out whats new for 2025 from the Lyric team. </p>
+                  </div>
+                </div>
+              </div>
             </SideContent>
           )}
         </div>

@@ -1,13 +1,15 @@
 "use client"
 
-import {redirect} from "next/navigation"
+import {useRouter} from "next/navigation"
 import {setShowSideContent} from "../actions"
 import Close from "../icons/Close"
 
 export default function SideContent({children}: {children: React.ReactNode}) {
+  const router = useRouter()
+
   const handleClose = async () => {
     await setShowSideContent(false)
-    redirect("/")
+    router.refresh()
   }
 
   return (
