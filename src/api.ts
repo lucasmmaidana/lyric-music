@@ -6,10 +6,20 @@ import {Album, Band} from "./types"
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, Math.random() * ms))
 
 const api = {
-  getBands: async (): Promise<Band[]> => {
+  getBands: async (search?: string, genre?: string): Promise<Band[]> => {
     await sleep(750)
 
-    return bands
+    let filteredBands = bands
+
+    if (genre) {
+      filteredBands = filteredBands.filter((band) => band.genre === genre)
+    }
+
+    if (search) {
+      filteredBands = filteredBands.filter((band) => `${band.band_name} ${band.album}`.toLowerCase().includes(search.toLowerCase()))
+    }
+
+    return filteredBands
   },
   getAlbum: async (id: Album["id"]): Promise<Album> => {
     await sleep(750)
@@ -26,7 +36,7 @@ const api = {
       id,
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate ve",
-      album: "Album not found",
+      album: "Default Album",
     }
   },
 }
