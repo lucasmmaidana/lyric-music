@@ -6,5 +6,5 @@ export default function BandImage({bandName, bandId, className}: {bandName: stri
   const [imgSrc, setImgSrc] = useState(`/im${bandId}.png`)
   const fallbackImage = `/default.png`
 
-  return <Image src={imgSrc} alt={bandName} fill objectFit="cover" className={className} onError={() => setImgSrc(fallbackImage)} />
+  return <Image src={imgSrc} alt={bandName} fill sizes="50vw" style={{objectFit: "cover"}} className={className} onError={() => setImgSrc(fallbackImage)} />
 }
